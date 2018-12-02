@@ -4,6 +4,7 @@
 # def make_a_new_movie_instance    # def make_a_new_movie_instance
 #   movie = __                     #   movie = Movie.new
 # end                              # end
+require 'pry'
 
 def can_be_instantiated_and_then_saved
   movie = Movie.create()
@@ -25,22 +26,24 @@ def can_be_created_with_a_hash_of_attributes
   movie
 end
 
-def can_be_created_in_a_block(args = __)
+def can_be_created_in_a_block(args =  {title: "Home Alone", release_date: 1990 })
   # If no arguments are passed, use default values:
   # title == "Home Alone"
   # release_date == 1990
   
   Movie.create do |m|
-    __
+     m.title = args[0]
+     m.release_date = args[1]
+     m
   end
 end
 
 def can_get_the_first_item_in_the_database
-  __
+  Movie.find_by(id).first
 end
 
 def can_get_the_last_item_in_the_database
-  __
+  
 end
 
 def can_get_size_of_the_database
